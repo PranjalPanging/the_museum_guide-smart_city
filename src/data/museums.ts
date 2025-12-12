@@ -1,4 +1,18 @@
 import { Museum } from "@/types/museum";
+import IndianMuseumKolkataImage from "@/assets/images/indian-museum-kolkata.png";
+import NationalMuseumDelhiImage from "@/assets/images/national-museum-delhi.png";
+import SalarJungMuseumImage from "@/assets/images/salar-jung-museum.png";
+import ChattrapatiShivajiMaharajMuseumImage from "@/assets/images/chhatrapati-shivaji-maharaj-museum.png";
+import GovernmentMuseumChennaiImage from "@/assets/images/government-museum-chennai.png";
+import AlbertHallMuseumImage from "@/assets/images/albert-hall-museum.png";
+import NapierMuseumImage from "@/assets/images/napier-museum.png";
+import CalicoMuseumTextilesImage from "@/assets/images/calico-museum-textiles.png";
+import CityPalaceUdaipurImage from "@/assets/images/city-palace-museum-udaipur.png";
+import PartitionMuseumImage from "@/assets/images/partition-museum.png";
+import NationalRailMuseumImage from "@/assets/images/national-rail-museum.png";
+import CraftsMuseumDelhiImage from "@/assets/images/crafts-museum-delhi.png";
+import BirlaScienceMuseumImage from "@/assets/images/birla-science-museum.png";
+import NehruScienceCenterImage from "@/assets/images/nehru-science-centre.png";
 
 export const museums: Museum[] = [
   {
@@ -8,7 +22,7 @@ export const museums: Museum[] = [
     state: "Delhi",
     description: "India's largest museum housing an extensive collection of artifacts spanning 5,000 years of Indian cultural heritage.",
     longDescription: "The National Museum in New Delhi is one of the largest museums in India. Established in 1949, it holds a variety of articles ranging from pre-historic era to modern works of art. The museum has a collection of approximately 2,00,000 works of both Indian and foreign origin. The museum is under the Ministry of Culture, Government of India.",
-    imageUrl: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=800",
+    imageUrl: NationalMuseumDelhiImage,
     openingHours: "10:00 AM - 6:00 PM",
     closedOn: "Monday",
     ticketPrice: { indian: 20, foreigner: 650, student: 10 },
@@ -32,7 +46,7 @@ export const museums: Museum[] = [
     state: "West Bengal",
     description: "The oldest and largest museum in India, featuring rare collections of antiques, armor, ornaments, fossils, and more.",
     longDescription: "Founded in 1814, the Indian Museum is the oldest and largest museum in the Indian subcontinent. It has rare collections of antiques, armor and ornaments, fossils, skeletons, mummies, and Mughal paintings. The museum is known as the 'Mother of all museums' in the Indian subcontinent.",
-    imageUrl: "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800",
+    imageUrl: IndianMuseumKolkataImage,
     openingHours: "10:00 AM - 5:00 PM",
     closedOn: "Monday",
     ticketPrice: { indian: 75, foreigner: 500, student: 20 },
@@ -56,7 +70,7 @@ export const museums: Museum[] = [
     state: "Maharashtra",
     description: "A premier art and history museum with outstanding collections of ancient Indian art, artifacts, and decorative arts.",
     longDescription: "Formerly known as the Prince of Wales Museum, this museum was founded in the early 20th century and is one of the premier art and history museums in India. The museum houses approximately 50,000 exhibits of ancient Indian history as well as objects from foreign lands.",
-    imageUrl: "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?w=800",
+    imageUrl: ChattrapatiShivajiMaharajMuseumImage,
     openingHours: "10:15 AM - 6:00 PM",
     closedOn: "Monday",
     ticketPrice: { indian: 85, foreigner: 650, student: 40 },
@@ -80,7 +94,7 @@ export const museums: Museum[] = [
     state: "Telangana",
     description: "One of the three national museums of India, housing the largest one-man collection of antiques in the world.",
     longDescription: "The Salar Jung Museum is an art museum located at Dar-ul-Shifa, on the southern bank of the Musi River. It is one of the three National Museums of India. The collection of the museum was largely gathered by Salar Jung III, representing the entire world of antiques.",
-    imageUrl: "https://images.unsplash.com/photo-1600166898405-da9535204843?w=800",
+    imageUrl: SalarJungMuseumImage,
     openingHours: "10:00 AM - 5:00 PM",
     closedOn: "Friday",
     ticketPrice: { indian: 20, foreigner: 500, student: 10 },
@@ -104,7 +118,7 @@ export const museums: Museum[] = [
     state: "Tamil Nadu",
     description: "The second oldest museum in India with a rich collection of archaeological and numismatic artifacts.",
     longDescription: "Also known as the Madras Museum, it is the second oldest museum in India and was established in 1851. The museum complex houses the largest collection of Roman antiquities outside Europe and has excellent bronze, stone, and Buddhist sculptures.",
-    imageUrl: "https://images.unsplash.com/photo-1600166898405-da9535204843?w=800",
+    imageUrl: GovernmentMuseumChennaiImage,
     openingHours: "9:30 AM - 5:00 PM",
     closedOn: "Friday",
     ticketPrice: { indian: 15, foreigner: 250, student: 10 },
@@ -128,7 +142,7 @@ export const museums: Museum[] = [
     state: "Rajasthan",
     description: "The oldest museum of Rajasthan, showcasing rich artifacts, paintings, and sculptures in a stunning Indo-Saracenic building.",
     longDescription: "The Albert Hall Museum is the oldest museum of the state and functions as the state museum of Rajasthan. The museum displays artifacts like paintings, carpets, ivory, stone, metal sculptures, and crystal works. The building itself is a masterpiece of Indo-Saracenic architecture.",
-    imageUrl: "https://images.unsplash.com/photo-1599661046289-e31897846e41?w=800",
+    imageUrl: AlbertHallMuseumImage,
     openingHours: "9:00 AM - 5:00 PM",
     closedOn: "Open all days",
     ticketPrice: { indian: 40, foreigner: 300, student: 20 },
@@ -152,7 +166,7 @@ export const museums: Museum[] = [
     state: "Kerala",
     description: "A 19th-century natural history and art museum with unique Indo-Saracenic architecture and rare artifacts.",
     longDescription: "The Napier Museum is an art and natural history museum with a unique architectural style that is a blend of Indian, Chinese, and European influences. The museum houses a rare collection of archaeological and historic artifacts, bronze idols, ancient ornaments, and ivory carvings.",
-    imageUrl: "https://images.unsplash.com/photo-1600166898405-da9535204843?w=800",
+    imageUrl: NapierMuseumImage,
     openingHours: "10:00 AM - 5:00 PM",
     closedOn: "Monday",
     ticketPrice: { indian: 20, foreigner: 200, student: 10 },
@@ -175,7 +189,7 @@ export const museums: Museum[] = [
     state: "Gujarat",
     description: "One of the world's finest textile museums showcasing India's rich textile heritage and craftsmanship.",
     longDescription: "The Calico Museum of Textiles is one of the most significant textile museums in the world. It houses a stunning collection of textiles and artifacts representing 500 years of Indian textile tradition. The museum showcases rare techniques like zari work, block printing, and embroidery.",
-    imageUrl: "https://images.unsplash.com/photo-1600166898405-da9535204843?w=800",
+    imageUrl: CalicoMuseumTextilesImage,
     openingHours: "10:30 AM - 12:30 PM & 2:45 PM - 4:30 PM",
     closedOn: "Wednesday & Public Holidays",
     ticketPrice: { indian: 0, foreigner: 0, student: 0 },
@@ -199,7 +213,7 @@ export const museums: Museum[] = [
     state: "Rajasthan",
     description: "A stunning palace complex housing royal artifacts, paintings, and offering breathtaking views of Lake Pichola.",
     longDescription: "The City Palace of Udaipur is a majestic architectural marvel on the east bank of Lake Pichola. The palace complex houses several museums displaying royal artifacts, including the Crystal Gallery, which contains an extensive collection of crystal items ordered from England in the 19th century.",
-    imageUrl: "https://images.unsplash.com/photo-1599661046289-e31897846e41?w=800",
+    imageUrl: CityPalaceUdaipurImage,
     openingHours: "9:30 AM - 5:30 PM",
     closedOn: "Open all days",
     ticketPrice: { indian: 300, foreigner: 300, student: 150 },
@@ -247,7 +261,7 @@ export const museums: Museum[] = [
     state: "Punjab",
     description: "A poignant museum documenting the 1947 partition of British India through personal stories and artifacts.",
     longDescription: "The Partition Museum is the world's first museum dedicated to the victims of the 1947 Partition of British India. Located in the historic Town Hall, it houses a collection of personal belongings, photographs, documents, and oral testimonies of those who witnessed the partition.",
-    imageUrl: "https://images.unsplash.com/photo-1600166898405-da9535204843?w=800",
+    imageUrl: PartitionMuseumImage,
     openingHours: "10:00 AM - 6:00 PM",
     closedOn: "Monday",
     ticketPrice: { indian: 10, foreigner: 250, student: 5 },
@@ -271,7 +285,7 @@ export const museums: Museum[] = [
     state: "Delhi",
     description: "A fascinating museum showcasing India's railway heritage with vintage locomotives and royal carriages.",
     longDescription: "The National Rail Museum is a railway museum showcasing over 160 years of Indian railway heritage. It features over 100 exhibits including engines, coaches, and other memorabilia. The museum also has working models and joy rides for visitors.",
-    imageUrl: "https://images.unsplash.com/photo-1600166898405-da9535204843?w=800",
+    imageUrl: NationalRailMuseumImage,
     openingHours: "10:00 AM - 5:00 PM",
     closedOn: "Monday",
     ticketPrice: { indian: 50, foreigner: 200, student: 20 },
@@ -295,7 +309,7 @@ export const museums: Museum[] = [
     state: "Delhi",
     description: "An extensive collection of traditional Indian handicrafts and folk arts in a village-like setting.",
     longDescription: "The Crafts Museum, also known as the National Handicrafts and Handlooms Museum, is dedicated to traditional Indian handicrafts. The museum complex recreates traditional village environments from different parts of India and houses over 20,000 craft objects.",
-    imageUrl: "https://images.unsplash.com/photo-1600166898405-da9535204843?w=800",
+    imageUrl: CraftsMuseumDelhiImage,
     openingHours: "10:00 AM - 5:00 PM",
     closedOn: "Monday",
     ticketPrice: { indian: 20, foreigner: 200, student: 10 },
@@ -318,7 +332,7 @@ export const museums: Museum[] = [
     state: "Telangana",
     description: "An interactive science and technology museum with a planetarium and dinosaur exhibits.",
     longDescription: "The Birla Science Museum is part of the B.M. Birla Science Centre and features science exhibits, a planetarium, an archaeology museum, and a dinosaurium. It's designed to make science accessible and engaging for visitors of all ages.",
-    imageUrl: "https://images.unsplash.com/photo-1600166898405-da9535204843?w=800",
+    imageUrl: BirlaScienceMuseumImage,
     openingHours: "10:30 AM - 8:00 PM",
     closedOn: "Open all days",
     ticketPrice: { indian: 70, foreigner: 150, student: 40 },
@@ -348,7 +362,7 @@ export const museums: Museum[] = [
     ticketPrice: { indian: 70, foreigner: 200, student: 40 },
     address: "Dr. E. Moses Road, Worli, Mumbai 400018",
     phone: "+91-22-24920482",
-    website: "https://nehrusciencecentre.gov.in",
+    website: NehruScienceCenterImage,
     category: "Science & Technology",
     rating: 4.4,
     topExhibits: [
