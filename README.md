@@ -47,9 +47,3 @@ This project is built with:
 - React
 - shadcn-ui
 - Tailwind CSS
- ## Team Member
- - Rawnak Das
- - Arman Ali
- - Abinash Thakur
- - Dishant Bordoloi
- - Pranjal Panging
