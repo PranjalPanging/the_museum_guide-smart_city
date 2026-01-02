@@ -35,25 +35,36 @@ const Scanner = () => {
   const analyzeImage = async () => {
     if (!image) return;
     setLoading(true);
+
     try {
-      const { data, error } = await supabase.functions.invoke("analyze-artifact", {
-        body: { image }
-      });
+      const userKey = localStorage.getItem("GEMINI_API_KEY");
+
+      const { data, error } = await supabase.functions.invoke(
+        "analyze-artifact",
+        {
+          body: {
+            image: image,
+            geminiKey: userKey,
+          },
+        }
+      );
+
       if (error) throw error;
+
       setResult(data);
-      
-      // Save scan to database if user is logged in
+
       if (user) {
         await supabase.from("scanned_artifacts").insert({
           user_id: user.id,
           artifact_name: data.name,
           artifact_info: data.info,
-          image_url: null // We don't store the image, just the base64 was for analysis
+          image_url: null, 
         });
-      }
-      
+      };
+
       toast.success("Artifact identified!");
     } catch (error: any) {
+      console.error("Analysis error:", error);
       toast.error(error.message || "Failed to analyze image");
     } finally {
       setLoading(false);

@@ -18,20 +18,17 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Set up auth state listener FIRST
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       if (!session) {
         navigate("/auth");
       } else {
         setUser(session.user);
-        // Defer data fetching
         setTimeout(() => {
           fetchData(session.user.id);
         }, 0);
       }
     });
 
-    // THEN check for existing session
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (!session) {
         navigate("/auth");
@@ -80,7 +77,6 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Header */}
       <div className="bg-gradient-hero relative overflow-hidden">
         <div className="absolute inset-0 bg-foreground/5" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-gold/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
@@ -97,7 +93,6 @@ const Dashboard = () => {
             </Button>
           </div>
           
-          {/* User Info */}
           <div className="flex flex-col sm:flex-row items-center gap-6 pb-8">
             <div className="w-24 h-24 rounded-full bg-primary-foreground/20 flex items-center justify-center backdrop-blur shadow-glow">
               <User className="w-12 h-12 text-primary-foreground" />
@@ -123,7 +118,6 @@ const Dashboard = () => {
       </div>
 
       <div className="container mx-auto px-4 py-8">
-        {/* Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 -mt-12 mb-8 relative z-10">
           {[
             { icon: Heart, label: "Wishlist", value: wishlist.length, color: "from-rose-500 to-pink-500", bgColor: "bg-rose-50 dark:bg-rose-950" },
@@ -141,7 +135,6 @@ const Dashboard = () => {
           ))}
         </div>
 
-        {/* Quick Actions */}
         <div className="grid grid-cols-2 gap-4 mb-8">
           <Link to="/museums" className="group">
             <div className="bg-card rounded-xl p-4 shadow-soft hover:shadow-medium transition-all border border-border/50 flex items-center gap-4">
@@ -167,7 +160,6 @@ const Dashboard = () => {
           </Link>
         </div>
 
-        {/* Tabs */}
         <Tabs defaultValue="wishlist" className="w-full">
           <TabsList className="w-full justify-start mb-6 bg-card/50 p-1 rounded-xl">
             <TabsTrigger value="wishlist" className="flex items-center gap-2 data-[state=active]:bg-gradient-hero data-[state=active]:text-primary-foreground">

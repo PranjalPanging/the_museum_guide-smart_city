@@ -1,93 +1,83 @@
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type",
 };
 
-serve(async (req) => {
+Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const { image } = await req.json();
-    const OPENROUTER_API_KEY = Deno.env.get("OPENROUTER_API_KEY");
-    
-    if (!OPENROUTER_API_KEY) {
-      throw new Error("OPENROUTER_API_KEY is not configured");
+    const { image, geminiKey } = await req.json();
+
+    const API_KEY = geminiKey || Deno.env.get("GEMINI_API_KEY");
+
+    if (!API_KEY) {
+      throw new Error("Gemini API Key is missing. Check your settings.");
     }
 
-    console.log("Analyzing artifact image with OpenRouter...");
+    console.log("Analyzing artifact image with Gemini...");
 
-    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
-        "Content-Type": "application/json",
-        "HTTP-Referer": "https://lovable.dev",
-        "X-Title": "Museum Guide App",
-      },
-      body: JSON.stringify({
-        model: "amazon/nova-2-lite-v1:free",
-        messages: [
-          {
-            role: "system",
-            content: `You are an expert art historian specializing in Indian art and artifacts. When shown an image, identify the artifact and provide:
-1. The name/title of the artifact
-2. A detailed description including its historical period, origin, significance, and artistic style.
+    const base64Data = image.split(",")[1] || image;
 
-If you cannot identify the specific artifact, provide information about the type/style of art it appears to be.
-
-Respond in JSON format: {"name": "...", "info": "..."}`
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                {
+                  text: 'You are an expert art historian specializing in Indian art. Identify this artifact and provide: 1. Name/Title, 2. History/Significance. Respond ONLY in JSON: {"name": "...", "info": "..."}',
+                },
+                {
+                  inline_data: {
+                    mime_type: "image/jpeg",
+                    data: base64Data,
+                  },
+                },
+              ],
+            },
+          ],
+          generationConfig: {
+            response_mime_type: "application/json",
           },
-          {
-            role: "user",
-            content: [
-              { type: "text", text: "Please identify this artifact and provide its history:" },
-              { type: "image_url", image_url: { url: image } }
-            ]
-          }
-        ],
-      }),
-    });
+        }),
+      }
+    );
 
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error("OpenRouter error:", response.status, errorText);
-      
-      if (response.status === 429) {
-        return new Response(JSON.stringify({ error: "Rate limit exceeded. Please try again later." }), {
-          status: 429,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
-      }
-      
-      throw new Error("Failed to analyze image");
+      const errorData = await response.json();
+      console.error("Gemini Vision Error:", errorData);
+      throw new Error(errorData.error?.message || "Failed to analyze image");
     }
 
-    const data = await response.json();
-    const content = data.choices?.[0]?.message?.content || "";
-    
-    console.log("OpenRouter response received:", content.substring(0, 100));
-    
+    const result = await response.json();
+    const content = result.candidates?.[0]?.content?.parts?.[0]?.text || "";
+
     try {
       const parsed = JSON.parse(content);
       return new Response(JSON.stringify(parsed), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     } catch {
-      return new Response(JSON.stringify({ 
-        name: "Unknown Artifact", 
-        info: content 
-      }), {
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+      return new Response(
+        JSON.stringify({
+          name: "Identified Artifact",
+          info: content,
+        }),
+        {
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        }
+      );
     }
-  } catch (error: unknown) {
-    const errorMessage = error instanceof Error ? error.message : "Unknown error occurred";
-    console.error("Error:", errorMessage);
-    return new Response(JSON.stringify({ error: errorMessage }), {
+  } catch (error: any) {
+    console.error("Vision Function Error:", error.message);
+    return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });

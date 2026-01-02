@@ -89,7 +89,6 @@ const MuseumDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero */}
       <div className="relative h-[50vh] min-h-[400px]">
         <img src={museum.imageUrl} alt={museum.name} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
@@ -115,9 +114,7 @@ const MuseumDetail = () => {
 
       <div className="container mx-auto px-4 py-8">
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
-            {/* AI Summary Section */}
             <section className="bg-gradient-to-r from-primary/5 to-gold/5 rounded-2xl p-6 border border-border/50">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
@@ -183,11 +180,9 @@ const MuseumDetail = () => {
               </div>
             </section>
 
-            {/* Review Section */}
             <ReviewSection museumId={id || ""} user={user} />
           </div>
 
-          {/* Sidebar */}
           <div className="space-y-6">
             <div className="bg-card rounded-2xl p-6 shadow-soft border border-border/50">
               <h3 className="font-display font-semibold mb-4 text-lg">Visitor Info</h3>
@@ -237,7 +232,6 @@ const MuseumDetail = () => {
         </div>
       </div>
 
-      {/* Exhibit Modal */}
       <ExhibitModal 
         exhibit={selectedExhibit} 
         open={!!selectedExhibit} 

@@ -58,7 +58,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
       <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
@@ -90,7 +89,6 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-gold/5" />
         <div className="container mx-auto px-4 relative">
@@ -102,7 +100,6 @@ const Index = () => {
               Explore thousands of museums, track your visits, scan artifacts, and create your personal cultural journey across India.
             </p>
             
-            {/* Search Bar */}
             <div className="relative max-w-xl mx-auto mb-8">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
               <Input
@@ -131,7 +128,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* AI Suggestions Section */}
       <section className="py-12 bg-gradient-to-r from-primary/5 to-gold/5">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
@@ -192,7 +188,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Featured Museums */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-8">

@@ -17,14 +17,12 @@ const Auth = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Set up auth state listener FIRST
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       if (session) {
         navigate("/dashboard");
       }
     });
 
-    // THEN check for existing session
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
         navigate("/dashboard");
@@ -70,7 +68,6 @@ const Auth = () => {
 
   return (
     <div className="min-h-screen bg-background flex">
-      {/* Left Panel */}
       <div className="hidden lg:flex lg:w-1/2 bg-gradient-hero items-center justify-center p-12 relative overflow-hidden">
         <div className="absolute inset-0 bg-foreground/10" />
         <div className="absolute top-0 left-0 w-96 h-96 bg-gold/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
@@ -98,7 +95,6 @@ const Auth = () => {
         </div>
       </div>
 
-      {/* Right Panel */}
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="w-full max-w-md">
           <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 transition-colors group">
